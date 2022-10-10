@@ -4,7 +4,7 @@
 https://3yj4p8wp1a.execute-api.eu-west-1.amazonaws.com/api/batch-upload
 
 # Example Request Body
-Endpoint needs an array of file informations.
+Endpoint needs an array of file informations. With ```id``` ```status``` ```path```
 
 ```
  [
