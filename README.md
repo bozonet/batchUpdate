@@ -1,9 +1,9 @@
 # batchUpdate API
 
-##Endpoint
+# Endpoint
 https://3yj4p8wp1a.execute-api.eu-west-1.amazonaws.com/api/batch-upload
 
-##Example Request Body
+# Example Request Body
 Endpoint needs an array of file informations.
 
 ```
@@ -26,7 +26,7 @@ Endpoint needs an array of file informations.
 ]
 ```
 
-##Architecture
+# Architecture
 * Chalice (Creating single file messages from batch request and send to SQS queue)
 * SQS (Trigger lambda/updateFileFunction)
 * Lambda Function (Request to client API with single file information)
