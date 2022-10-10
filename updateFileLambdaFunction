@@ -1,0 +1,37 @@
+const axios = require("axios"); 
+
+exports.handler = async (event) => {
+    const fileId = JSON.parse(event.Records[0].body).id;
+    const fileStatus = JSON.parse(event.Records[0].body).status;
+    const filePath = JSON.parse(event.Records[0].body).path;
+    const data = {};
+
+    if (!fileId) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                message: "File ID is required",
+            }),
+        };
+    }
+    if (fileStatus) {
+        data.status = fileStatus;
+    }
+    if (filePath) {
+        data.path = filePath;
+    }
+  
+   await axios.patch("https://pxlnwwd545.execute-api.us-east-2.amazonaws.com/api/buckets/oythPLfwaPr0/files/" + fileId, data)
+   .then((response) => {
+        const result = {
+            status: 200,
+            body: response,
+        };
+        return result;
+    }, (error) => {
+
+        return Exception(error);
+
+
+    });
+};
